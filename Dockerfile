@@ -2,12 +2,12 @@ FROM registry:2 AS registry
 
 FROM shoothzj/base
 
-COPY --from=registry /etc/docker/registry/config.yml /opt/sh/registry/config.yml
+COPY --from=registry /etc/docker/registry/config.yml /opt/registry/config.yml
 
-COPY --from=registry /bin/registry /opt/sh/registry/registry
+COPY --from=registry /bin/registry /opt/registry/registry
 
-ENV REGISTRY_HOME /opt/sh/registry
+ENV REGISTRY_HOME /opt/registry
 
-RUN ln -s /opt/sh/registry/registry /usr/bin/registry
+RUN ln -s /opt/registry/registry /usr/bin/registry
 
-WORKDIR /opt/sh/registry
+WORKDIR /opt/registry
